@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 import pg from 'pg'
+import nodemailer from 'nodemailer'
 
 import {
     envRequiredVars,
@@ -16,6 +17,8 @@ import {
     default_db_type,
     get_db_types,
     table_user,
+    table_user_otp,
+    table_user_session,
     table_project,
     table_access,
     table_connection,
@@ -87,6 +90,8 @@ export async function setupRFDatabase() {
         }
 
         await pool.query(table_user)
+        await pool.query(table_user_otp)
+        await pool.query(table_user_session)
         await pool.query(table_project)
         await pool.query(table_access)
         await pool.query(table_connection)

@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 import { 
     checkRequiredEnvVars,
@@ -19,6 +20,7 @@ const app = express()
 
 app.use(bodyParser.json({extended: true, limit: '50mb'}))
 app.use(bodyParser.urlencoded({}))
+app.use(cookieParser())
 app.use(cors())
 
 app.use('/', router)

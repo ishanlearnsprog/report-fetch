@@ -31,8 +31,23 @@ export const table_user = `
         last_name varchar(50) NOT NULL,
         email varchar(254) NOT NULL UNIQUE,
         password varchar(60) NOT NULL,
+        verified boolean DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );`
+
+export const table_user_otp = `
+    CREATE TABLE IF NOT EXISTS "user_otp" (
+        user_id uuid REFERENCES "user" (user_id) PRIMARY KEY,
+        otp char(6) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );`
+
+export const table_user_session = `
+    CREATE TABLE IF NOT EXISTS "user_session" (
+        us_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+        user_id uuid NOT NULL REFERENCES "user" (user_id),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );`
 
 export const table_project = `
