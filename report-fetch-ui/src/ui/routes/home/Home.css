@@ -1,0 +1,22 @@
+.home {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home {
+    background-color: var(--primary);
+    color: var(--on-primary)
+}
+
+.content .display {
+    text-align: center;
+    margin: 2.5rem;
+}
+
+.content .title {
+    text-align: center;
+    margin: 2.5rem;
+}
